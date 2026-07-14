@@ -1,0 +1,1052 @@
+/* ============================================================
+   DALBIT — 달빛 · Clean Commercial Theme
+   ============================================================ */
+
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f7f7f8;
+  --surface: #ffffff;
+  --ink: #111111;
+  --ink-soft: #737373;
+  --line: #ececec;
+  --accent: #111111;
+  --accent-deep: #000000;
+  --moon: #f3f3f3;
+  --shadow: 0 20px 44px -22px rgba(0, 0, 0, 0.16);
+  --radius: 8px;
+  --radius-lg: 16px;
+
+  --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Helvetica Neue", sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg: #101010;
+  --bg-soft: #181818;
+  --surface: #181818;
+  --ink: #f2f2f2;
+  --ink-soft: #9a9a9a;
+  --line: #2a2a2a;
+  --accent: #ffffff;
+  --accent-deep: #ffffff;
+  --moon: #222222;
+  --shadow: 0 20px 44px -22px rgba(0, 0, 0, 0.7);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  letter-spacing: -0.02em;
+  transition: background 0.4s ease, color 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+
+.container {
+  width: min(1120px, 100% - 48px);
+  margin-inline: auto;
+}
+
+/* ------------------------------------------------------------
+   Header
+   ------------------------------------------------------------ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.brand .brand-en { align-self: flex-end; padding-bottom: 5px; }
+
+.brand .brand-ko {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.brand .brand-en {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.main-nav a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  letter-spacing: -0.01em;
+  padding: 6px 0;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active { color: var(--ink); }
+
+.main-nav a:hover::after,
+.main-nav a.active::after { transform: scaleX(1); }
+
+.nav-cta {
+  background: var(--ink);
+  color: var(--bg) !important;
+  padding: 9px 20px !important;
+  border-radius: 100px;
+  font-weight: 600;
+  transition: opacity 0.25s ease;
+}
+
+.nav-cta::after { display: none; }
+
+.nav-cta:hover { opacity: 0.82; }
+
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lang-toggle {
+  height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.lang-toggle:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.theme-toggle {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-soft);
+  display: grid;
+  place-items: center;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+.menu-toggle {
+  display: none;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 15px;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+body.menu-open .menu-toggle span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+body.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ------------------------------------------------------------
+   Page hero (공통 상단)
+   ------------------------------------------------------------ */
+.page-hero {
+  padding: 96px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.eyebrow {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 22px;
+  display: inline-block;
+}
+
+.page-hero h1 {
+  font-weight: 800;
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  line-height: 1.28;
+  letter-spacing: -0.04em;
+  word-break: keep-all;
+}
+
+.page-hero .lede {
+  max-width: 560px;
+  margin: 22px auto 0;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  word-break: keep-all;
+}
+
+.rule {
+  width: 44px;
+  height: 2px;
+  background: var(--ink);
+  margin: 34px auto 0;
+}
+
+/* ------------------------------------------------------------
+   Home hero
+   ------------------------------------------------------------ */
+.home-hero {
+  min-height: calc(100vh - 68px);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 72px 0;
+}
+
+.moon-orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -54%);
+  width: min(520px, 82vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, var(--moon), transparent 68%);
+  opacity: 0.8;
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.home-hero .container { position: relative; }
+
+.home-hero h1 {
+  font-weight: 800;
+  font-size: clamp(2.1rem, 5.2vw, 3.8rem);
+  line-height: 1.22;
+  letter-spacing: -0.045em;
+  word-break: keep-all;
+}
+
+.home-hero .lede {
+  max-width: 520px;
+  margin: 26px auto 0;
+  color: var(--ink-soft);
+  font-size: clamp(0.98rem, 1.4vw, 1.08rem);
+  word-break: keep-all;
+}
+
+.hero-actions {
+  margin-top: 44px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ------------------------------------------------------------
+   Illustrations (SVG)
+   ------------------------------------------------------------ */
+.hero-illust {
+  margin-bottom: 30px;
+}
+
+.hero-illust svg {
+  width: clamp(140px, 20vw, 190px);
+  height: auto;
+  margin-inline: auto;
+  display: block;
+}
+
+.glyph-svg {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 22px;
+  display: block;
+  color: var(--ink);
+}
+
+.step-icon {
+  width: 44px;
+  height: 44px;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.product-visual svg.product-illust {
+  width: 72%;
+  max-width: 300px;
+  height: auto;
+}
+
+/* ------------------------------------------------------------
+   Buttons
+   ------------------------------------------------------------ */
+.btn {
+  display: inline-block;
+  padding: 15px 32px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  color: var(--ink);
+  background: transparent;
+  transition: background 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+}
+
+.btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.btn-solid {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.btn-solid:hover { opacity: 0.82; }
+
+.btn-gold {
+  border-color: var(--line);
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.btn-gold:hover {
+  border-color: var(--ink);
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.btn-block { width: 100%; text-align: center; }
+
+/* ------------------------------------------------------------
+   Sections
+   ------------------------------------------------------------ */
+.section { padding: 96px 0; }
+.section.alt { background: var(--bg-soft); transition: background 0.4s ease; }
+
+.section-head {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-head h2 {
+  font-weight: 800;
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  line-height: 1.32;
+  letter-spacing: -0.04em;
+  word-break: keep-all;
+}
+
+.section-head p {
+  color: var(--ink-soft);
+  margin-top: 14px;
+  word-break: keep-all;
+}
+
+/* ------------------------------------------------------------
+   Cards (팔레트 구성)
+   ------------------------------------------------------------ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 48px 32px 42px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+              background 0.4s ease, border-color 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.card .card-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.card h3 {
+  font-size: 1.28rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 14px 0 16px;
+}
+
+.card p {
+  font-size: 0.93rem;
+  color: var(--ink-soft);
+  word-break: keep-all;
+  text-align: left;
+}
+
+/* ------------------------------------------------------------
+   Ritual steps
+   ------------------------------------------------------------ */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.step {
+  position: relative;
+  padding: 52px 36px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.58);
+  transition: background 0.3s ease;
+}
+
+.step:hover::before { background: rgba(10, 10, 10, 0.42); }
+
+.step > * { position: relative; z-index: 1; }
+
+.step-1 { background-image: url("../public/moyakgwa.png"); }
+.step-2 { background-image: url("../public/moyakgwa-matcha.png"); }
+.step-3 { background-image: url("../public/moyakgwa-set.png"); }
+
+.step:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.step .step-icon { color: #ffffff; }
+
+.step .num {
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 0.04em;
+}
+
+.step .step-en {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 14px 0 2px;
+  color: #ffffff;
+}
+
+.step .step-ko {
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 22px;
+}
+
+.step h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.step p {
+  font-size: 0.93rem;
+  color: rgba(255, 255, 255, 0.82);
+  word-break: keep-all;
+}
+
+/* ------------------------------------------------------------
+   Boutique / product
+   ------------------------------------------------------------ */
+.product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.product-visual {
+  aspect-ratio: 4 / 5;
+  background: var(--bg-soft);
+  border-radius: var(--radius-lg);
+  display: grid;
+  place-items: center;
+  position: relative;
+  transition: background 0.4s ease;
+}
+
+.product-slider {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.product-slider .slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.product-slider .slide.active { opacity: 1; }
+
+.product-visual { position: relative; overflow: hidden; }
+
+.product-visual .visual-sub {
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.82);
+  color: #111111;
+  padding: 7px 16px;
+  border-radius: 100px;
+  position: absolute;
+  bottom: 30px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.product-info .card-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.product-info h2 {
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin: 14px 0 20px;
+  word-break: keep-all;
+}
+
+.product-info .desc {
+  color: var(--ink-soft);
+  word-break: keep-all;
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--line);
+}
+
+.product-info ul {
+  list-style: none;
+  margin: 24px 0;
+}
+
+.product-info li {
+  padding: 9px 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  display: flex;
+  gap: 12px;
+}
+
+.product-info li::before {
+  content: "—";
+  color: var(--ink);
+}
+
+.price {
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+}
+
+/* ------------------------------------------------------------
+   Pre-order form
+   ------------------------------------------------------------ */
+.preorder-wrap {
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.preorder-copy {
+  text-align: center;
+  color: var(--ink-soft);
+  word-break: keep-all;
+  margin-bottom: 42px;
+}
+
+.preorder-copy strong { color: var(--ink); font-weight: 700; }
+
+.field { margin-bottom: 16px; }
+
+.field label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.field input {
+  width: 100%;
+  padding: 15px 16px;
+  font-size: 0.98rem;
+  font-family: inherit;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  background: var(--bg-soft);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  transition: border-color 0.25s ease, background 0.3s ease;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--ink);
+  background: var(--bg);
+}
+
+.field input::placeholder { color: var(--ink-soft); opacity: 0.6; }
+
+.form-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 28px 0;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.form-divider::before,
+.form-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.privacy-note {
+  margin-top: 24px;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-align: center;
+  word-break: keep-all;
+}
+
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 40px 24px;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  word-break: keep-all;
+}
+
+/* ------------------------------------------------------------
+   Home teasers (페이지 안내 카드)
+   ------------------------------------------------------------ */
+.teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.teaser {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 42px 32px;
+  background: var(--surface);
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+              background 0.4s ease, border-color 0.4s ease;
+}
+
+.teaser:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.teaser .card-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.teaser h3 {
+  font-size: 1.22rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 14px 0 10px;
+}
+
+.teaser p {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  word-break: keep-all;
+  margin-bottom: 22px;
+}
+
+.teaser .more {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------
+   CTA band
+   ------------------------------------------------------------ */
+.cta-band {
+  text-align: center;
+  padding: 100px 0;
+  background: var(--bg-soft);
+  transition: background 0.4s ease;
+}
+
+.cta-band h2 {
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin-bottom: 30px;
+  word-break: keep-all;
+}
+
+/* ------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------ */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 56px 0;
+  text-align: center;
+  transition: border-color 0.4s ease;
+}
+
+.site-footer .footer-logo {
+  width: 96px;
+  height: 96px;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+}
+
+.site-footer .brand-ko {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.site-footer .tagline {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 8px;
+}
+
+.site-footer .copyright {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+/* ------------------------------------------------------------
+   Top banner
+   ------------------------------------------------------------ */
+.top-banner img {
+  width: 100%;
+  display: block;
+}
+
+/* ------------------------------------------------------------
+   Card photo (제품 사진)
+   ------------------------------------------------------------ */
+.card-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 26px;
+}
+
+/* ------------------------------------------------------------
+   CTA with cloud background
+   ------------------------------------------------------------ */
+.cta-clouds {
+  background: url("../public/clouds-bg.png") center / cover no-repeat;
+}
+
+.cta-photo {
+  background: url("../public/discount-bg.png") center / cover no-repeat;
+}
+
+.cta-clouds .eyebrow,
+.cta-photo .eyebrow { color: #6b6b6b; }
+
+.cta-clouds h2,
+.cta-photo h2 { color: #111111; }
+
+.cta-clouds .btn-gold,
+.cta-photo .btn-gold {
+  border-color: #111111;
+  color: #111111;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.cta-clouds .btn-gold:hover,
+.cta-photo .btn-gold:hover {
+  background: #111111;
+  color: #ffffff;
+  border-color: #111111;
+}
+
+/* ------------------------------------------------------------
+   Modal (구매하기 안내)
+   ------------------------------------------------------------ */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.modal-backdrop[hidden] { display: none; }
+
+.modal {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 44px 32px 32px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.45);
+  animation: modal-pop 0.25s ease;
+}
+
+@keyframes modal-pop {
+  from { transform: translateY(10px) scale(0.97); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+.modal-moon {
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.modal h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+.modal p {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  word-break: keep-all;
+  margin-bottom: 24px;
+}
+
+.modal p strong { color: var(--ink); }
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--ink-soft);
+  padding: 6px;
+}
+
+.modal-close:hover { color: var(--ink); }
+
+/* ------------------------------------------------------------
+   Reveal animation
+   ------------------------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ------------------------------------------------------------
+   Mobile
+   ------------------------------------------------------------ */
+@media (max-width: 900px) {
+  .container { width: min(1120px, 100% - 40px); }
+
+  .menu-toggle { display: flex; }
+
+  .main-nav {
+    position: fixed;
+    inset: 68px 0 auto 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 24px 26px;
+    transform: translateY(-12px);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
+    z-index: 99;
+  }
+
+  body.menu-open .main-nav {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .main-nav a {
+    padding: 16px 4px;
+    font-size: 1.02rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .main-nav a::after { display: none; }
+
+  .main-nav a.active { color: var(--ink); font-weight: 700; }
+
+  .nav-cta {
+    margin-top: 18px;
+    text-align: center;
+    border-radius: var(--radius);
+    border-bottom: none !important;
+  }
+
+  .card-grid,
+  .teaser-grid,
+  .steps { grid-template-columns: 1fr; }
+
+  .step { padding: 44px 30px; }
+
+  .product {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .section { padding: 68px 0; }
+  .page-hero { padding: 72px 0 58px; }
+  .home-hero { min-height: calc(100svh - 68px); }
+}

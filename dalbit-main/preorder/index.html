@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="pre.title">알림 신청 | 달빛 DALBIT</title>
+  <meta name="description" content="달빛 첫 공개, 슈퍼 얼리버드 알림 신청. 10% 특별 할인 쿠폰을 보내드립니다." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="/js/main.js" defer></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand"><img class="brand-logo" src="/public/logo.png" alt="달빛 로고" />
+        <span class="brand-ko" data-i18n="brand.main">달빛</span>
+        <span class="brand-en" data-i18n="brand.sub">Dalbit</span>
+      </a>
+
+      <nav class="main-nav" aria-label="주 메뉴">
+        <a href="/palette/" data-i18n="nav.palette">달빛 팔레트</a>
+        <a href="/ritual/" data-i18n="nav.ritual">미식 경험</a>
+        <a href="/shop/" data-i18n="nav.shop">온라인 구매</a>
+        <a href="/preorder/" class="nav-cta" data-i18n="nav.cta">알림 신청</a>
+      </nav>
+
+      <div class="header-tools">
+        <button class="lang-toggle" aria-label="언어 전환 / Switch language">EN</button>
+        <button class="theme-toggle" aria-label="라이트/다크 모드 전환">
+          <span class="icon-moon">☾</span>
+          <span class="icon-sun">☀</span>
+        </button>
+        <button class="menu-toggle" aria-label="메뉴 열기" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="top-banner">
+      <img src="/public/hero-banner.jpeg" alt="달빛 DALBIT — Moyakgwa · My Special" />
+    </section>
+
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow reveal">Early Bird Pre-order</span>
+        <h1 class="reveal" data-i18n="pre.h1">달빛 첫 공개,<br />슈퍼 얼리버드 알림 신청</h1>
+        <div class="rule reveal"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="preorder-wrap reveal">
+          <p class="preorder-copy" data-i18n="pre.copy">
+            가장 한국적인 낭만을 선물하세요. 시중의 투박한 간식이 아닌 완벽한 K-Dessert.
+            지금 이메일과 연락처를 남겨주시면, 정식 오픈 시 가장 먼저 안내와 함께
+            <strong>'10% 특별 할인 쿠폰'</strong>을 보내드립니다.
+          </p>
+
+          <form id="preorder-form">
+            <div class="field">
+              <label for="email" data-i18n="pre.email">이메일 주소</label>
+              <input type="email" id="email" name="email" placeholder="이메일 주소" data-i18n-ph="pre.email" required />
+            </div>
+            <div class="field">
+              <label for="phone" data-i18n="pre.phone">연락처</label>
+              <input type="tel" id="phone" name="phone" placeholder="연락처" data-i18n-ph="pre.phone" required />
+            </div>
+            <button type="submit" class="btn btn-solid btn-block" data-i18n="common.cta.preorder">할인 쿠폰 받고 사전예약하기</button>
+          </form>
+
+          <div class="form-success" data-i18n="pre.success">
+            신청이 완료되었습니다.<br />
+            달빛의 첫 소식을 가장 먼저 전해드릴게요. ☾
+          </div>
+
+          <p class="privacy-note" data-i18n="pre.privacy">* 수집된 정보는 오픈 알림 및 쿠폰 발송 목적으로만 사용되며 안전하게 폐기됩니다.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <img class="footer-logo" src="/public/logo.png" alt="달빛 로고" /><div class="brand-ko" data-i18n="brand.main">달빛</div>
+      <div class="tagline" data-i18n="brand.sub">Dalbit</div>
+      <p class="copyright">© 2026 DALBIT. All rights reserved. Share the Moonlight.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
