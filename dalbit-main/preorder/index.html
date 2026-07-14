@@ -91,5 +91,38 @@
     </div>
   </footer>
 
+<!-- 데이터 전송을 위한 Supabase 스크립트 -->
+  <script type="module">
+    // 파일 경로 주의: config.js가 최상단 폴더에 있다면 '../config.js'를 사용합니다.
+    import { supabase } from '../config.js';
+
+    // 1. 내 웹사이트의 폼 가져오기
+    const form = document.getElementById('preorder-form');
+
+    // 2. '사전예약하기' 버튼을 눌렀을 때 실행될 로직
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault(); // 새로고침 방지
+
+        // 3. 사용자가 입력한 이메일과 연락처 가져오기
+        const emailValue = document.getElementById('email').value;
+        const phoneValue = document.getElementById('phone').value;
+
+        // 4. 슈퍼베이스 'leads' 테이블로 데이터 쏘아 보내기
+        const { data, error } = await supabase
+            .from('leads')
+            .insert([
+                { email: emailValue, phone: phoneValue }
+            ]);
+
+        // 5. 성공/실패 결과 알려주기
+        if (error) {
+            console.error('에러 발생:', error);
+            alert('신청 중 문제가 발생했습니다.');
+        } else {
+            alert('사전예약 신청이 성공적으로 완료되었습니다! 10% 특별 할인 쿠폰을 기대해 주세요.');
+            form.reset(); // 입력칸 비우기
+        }
+    });
+  </script>
 </body>
 </html>
